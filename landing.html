@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FasterUi Landing Page</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+    :root{
+        --logo-size:70%;
+        --bg-container: #F5F8FF;
+        --navbar-font: Inter;
+        --authOption-font: Raleway;
+        --btn-color: #4E47FF;
+        --btn-border-radius: 10px;
+        --navItem-text-active: #252432;
+        --navItem-text: #8987A1;
+        --authOption-signin: #8987A1;
+        --banner-text:#252432;
+        --black-button: #252432;
+    }
+    body{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .container{
+        min-width: 100vw;
+        min-height: 100vh;
+        width: max-content;
+        height: max-content;
+        background: var(--bg-container);
+    }
+
+    .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+    .header{
+        display: grid;
+        grid-template-columns: 20% 40% 20%;
+        justify-content: space-between;
+        padding: 1.5rem 5rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .header .header__logo{
+        width: var(--logo-size);
+        height: max-content;
+        object-fit:contain;
+        overflow: hidden;
+    }
+    
+    .header__logo img{
+        width: 100%;
+    }
+    .header .header__nav{
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid #FFFFFF;
+        border-radius: 20px;
+        padding:  5% 6%;
+        width: 90%;
+        font-family: var(--navbar-font);
+    }
+    ul, button{
+        margin: 0;
+        padding: 0;
+    }
+    .header .header__nav .nav__list {
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: max-content max-content max-content max-content;
+        gap: 11%;
+        margin: 0;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: clamp(5px, 1.1vw,1rem);
+        
+    }
+    .nav__list .nav__item .nav__link{
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .nav__item{
+        color: var(--navItem-text);
+        font-weight: 300;
+    }
+    .nav__item.active{
+        color: var(--navItem-text-active);
+        font-weight: 700;
+    }
+    .header .header__auth{
+       width: 100%;
+       display: flex;
+       gap: 8%;
+       justify-content: end;
+    }
+    .header .header__auth .auth__button{
+        font-family: var(--authOption-font);
+        background-color: inherit;
+        border: none;
+        cursor: pointer;
+        white-space: nowrap;
+        padding: 6% 15%;
+        font-size: clamp(5px, 1vw,1rem);
+        cursor: pointer;
+    }
+
+    .header .header__auth .auth__button--sign-up{
+        background-color: var(--btn-color);
+        border-radius: var(--btn-border-radius);
+        font-weight: 600;
+        color: #FFFFFF
+    }
+    .header .header__auth .auth__button--sign-in{
+        padding: 0;
+        color: var(--authOption-signin);
+        font-weight: 400;
+        opacity: 0.8;
+    }
+
+    .mask-bg{
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        object-fit: contain;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .mask-bg img{
+        width: 80%;
+    }
+
+
+    .banner{
+        width: 100vw;
+        height: max-content;
+        position: relative;
+        padding-top:3rem;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .banner__contents{
+        max-width: 80%;
+        width: 65%;
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .banner__text{
+        width: 80%;
+        font-family: var(--navbar-font);
+        font-size: clamp(40px,5vw,5rem);
+        text-align: center;
+        font-weight: 650;
+        white-space: wrap;
+        color: var(--banner-text);
+        margin-bottom: 2rem;
+    }
+
+    .banner__action{
+        padding-top: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .banner__button{
+        background: var(--black-button);
+        font-family: var(--authOption-font);
+        color:#ffffff;
+        font-size: clamp(10px,1.1vw,1rem);
+        padding: 25% 50%;
+        white-space: nowrap;
+        border: none;
+        border-radius: var(--btn-border-radius);
+        font-weight: 700;
+        cursor: pointer;
+    }
+    
+    .services{
+        padding: 0 6rem;
+        padding-top: 8rem;
+    }
+    .services__heading{
+        font-family: var(--authOption-font);
+        font-weight: 700;
+        font-size: clamp(20px,2vw,4rem);
+        color: var(--black-button);
+        position: relative;
+        z-index: 1;
+    }
+
+    .services__cards {
+            display: grid;
+            grid-template-columns: repeat(4, 20vw);
+            row-gap: 30px;
+            column-gap: 30px;
+            height: 33rem;
+            position: relative;
+            z-index: 1;
+        }
+        .card__item {
+            background: #FFFFFF;
+            mix-blend-mode: plus-lighter;
+            border-radius: 10px;
+        }
+        .services__cards .card__item:nth-child(5) {
+            grid-column: span 2;
+            display: flex;
+            gap: 5%;
+            align-items: center;
+        }
+        .services__cards .card__item:nth-child(4) {
+            grid-row: span 2;
+            height: auto; /* Ensure it stretches properly */
+            display: flex;
+            flex-direction: column;
+            gap: 5%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card__image{
+            width: 18vw;
+            object-fit: contain;
+        }
+
+        .services__cards .card__item:nth-child(5) .card__image{
+            width: 15vw;
+            background: #5B54FF;
+            height: 15vw;
+            display: flex;
+            border-radius: var(--btn-border-radius);
+        }
+
+        .services__cards .card__item:nth-child(5) .card__image img{ 
+            width: 4rem;
+            margin: auto;
+        }
+
+
+        .card__image img{
+            width: 100%;
+        }
+        .card__item{
+            padding: 1rem 1.5rem;
+            height: max-content;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+
+        }
+        .card__icon{
+            display: flex;
+            justify-content: start;
+            padding: 1rem 0;
+            
+
+        }
+
+        .ico{
+            height: 12%;
+            width: 12%;
+            object-fit: contain;
+            background: #F5F8FF;
+            mix-blend-mode: normal;
+            border-radius: 9px;
+            padding: 4%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .ico img{
+            width: 100%;
+        }
+
+        .card__title{
+            font-family: var(--authOption-font);
+            color: var(--banner-text);
+            font-size: clamp(12px, 1.4vw,1.4rem);
+            font-weight: 650;
+        }
+
+        .card__description{
+            padding: 1rem 0;
+            white-space: wrap;
+            font-family: var(--navbar-font);
+            color: var(--authOption-signin);
+            font-size: clamp(10px,1vw,1rem);
+            font-weight: 400;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+</style>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header__logo">
+                <img src="./assets/FasterUI_Logo.svg" alt="FasterUi Logo">
+            </div>
+            <nav class="header__nav">
+                <ul class="nav__list">
+                    <li class="nav__item active"><a href="#" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">How it works</a></li>
+                    <li class="nav__item"><a href="#" class="nav__link">Services</a></li>
+                </ul>
+            </nav>
+            <div class="header__auth">
+                <button class="auth__button auth__button--sign-in">Sign In</button>
+                <button class="auth__button auth__button--sign-up">Sign Up</button>
+            </div>
+        </header>
+        <div class="mask-bg">
+            <img src="./assets/bgMask.svg" alt="BG MASK">
+        </div>
+        <div class="banner">
+            <div class="banner__contents">
+                <div class="banner__text">Awesome UI Dark Template for Webflow Agency</div>
+                <div class="banner__action">
+                    <button class="banner__button">Get in Touch</button>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="services">
+            <div class="services__heading">
+                <h1>What We do</h1>
+            </div>
+            <div class="services__cards">
+                <div class="card__item">
+                    <div class="card__icon">
+                        <div class="ico">
+                            <img src="./assets/icon1.svg" alt="card icon"/>
+                        </div>
+                    </div>
+                    <div class="card__title">
+                        Web Design
+                    </div>
+                    <div class="card__description">
+                        From concept to launch, we create stunning, user-centric websites that elevate your brand and engage your audience.
+                    </div>
+                </div>
+                <div class="card__item">
+                    <div class="card__icon">
+                        <div class="ico">
+                            <img src="./assets/icon2.svg" alt="card icon"/>
+                        </div>
+                    </div>
+                    <div class="card__title">
+                        UI/UX Design
+                    </div>
+                    <div class="card__description">
+                        From concept to launch, we create stunning, user-centric websites that elevate your brand and engage your audience.                    </div>
+                </div>
+                <div class="card__item">
+                    <div class="card__icon">
+                        <div class="ico">
+                            <img src="./assets/icon3.svg" alt="card icon"/>
+                        </div>
+                    </div>
+                    <div class="card__title">
+                        Responsive Design
+                    </div>
+                    <div class="card__description">
+                        From concept to launch, we create stunning, user-centric websites that elevate your brand and engage your audience.
+                    </div>
+                </div>
+                <div class="card__item">
+                    <div class="section_one">
+                        <div class="card__icon">
+                            <div class="ico">
+                                <img src="./assets/icon4.svg" alt="card icon"/>
+                            </div>
+                        </div>
+                        <div class="card__title">
+                            E-commerce Solutions:
+                        </div>
+                        <div class="card__description">
+                            From concept to launch, we create stunning, user-centric websites that elevate your brand and engage your audience.
+                        </div>
+                    </div>
+                    <div class="section_two">
+                        <div class="card__image">
+                            <img src="./assets/cardImg1.svg" alt="card image">
+                        </div>
+                    </div>
+                </div>
+                <div class="card__item">
+                    <div class="section_one">
+                        <div class="card__icon">
+                            <div class="ico">
+                                <img src="./assets/icon5.svg" alt="card icon"/>
+                            </div>
+                        </div>
+                        <div class="card__title">
+                            Webflow
+                        </div>
+                        <div class="card__description">
+                            From concept to launch, we create stunning, user-centric websites that elevate your brand and engage your audience.
+                        </div>
+                    </div>
+                    <div class="section_two">
+                        <div class="card__image">
+                            <img src="./assets/cardImg2.png" alt="card image">
+                        </div>
+                    </div>
+                </div>
+                <div class="card__item">
+                    <div class="card__icon">
+                        <div class="ico">
+                            <img src="./assets/icon6.svg" alt="card icon"/>
+                        </div>
+                    </div>
+                    <div class="card__title">
+                        Custom Development
+                    </div>
+                    <div class="card__description">
+                        From concept to launch, we create stunning, user-centric websites that elevate your brand and engage your audience.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
